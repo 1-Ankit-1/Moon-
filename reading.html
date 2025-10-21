@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Reading Tracker Page Specific Styles */
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #007BFF;
+    }
+    #tracker-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .tracker-item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .tracker-item:last-child {
+      border-bottom: none;
+    }
+    .book-cover {
+      width: 60px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+    .book-info {
+      flex: 1;
+    }
+    .book-title {
+      font-size: 1.2rem;
+      margin: 0 0 4px;
+    }
+    .book-author,
+    .total-pages {
+      font-size: 0.9rem;
+      margin: 2px 0;
+      color: #555;
+    }
+    .progress-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .progress-controls button {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+    .progress-controls button:hover,
+    .progress-controls button:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 8px rgba(0,123,255,0.5);
+    }
+    .progress-controls .pages-read {
+      min-width: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reading Tracker</h1>
+  </header>
+  <section id="tracker-list">
+    <!-- Tracker Item 1: 1984 -->
+    <div class="tracker-item" data-book-id="1">
+      <img class="book-cover" src="ninteen_eighty_four.webp" alt="1984 Cover">
+      <div class="book-info">
+         <h3 class="book-title">1984</h3>
+         <p class="book-author">by George Orwell</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">328</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">328</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 2: To Kill a Mockingbird -->
+    <div class="tracker-item" data-book-id="2">
+      <img class="book-cover" src="mockingbird.jpg" alt="To Kill a Mockingbird Cover">
+      <div class="book-info">
+         <h3 class="book-title">To Kill a Mockingbird</h3>
+         <p class="book-author">by Harper Lee</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">281</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">281</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 3: The Great Gatsby -->
+    <div class="tracker-item" data-book-id="3">
+      <img class="book-cover" src="gatsby.jpg" alt="The Great Gatsby Cover">
+      <div class="book-info">
+         <h3 class="book-title">The Great Gatsby</h3>
+         <p class="book-author">by F. Scott Fitzgerald</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">180</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">180</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 4: Brave New World -->
+    <div class="tracker-item" data-book-id="4">
+      <img class="book-cover" src="brave.jpg" alt="Brave New World Cover">
+      <div class="book-info">
+         <h3 class="book-title">Brave New World</h3>
+         <p class="book-author">by Aldous Huxley</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">311</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">311</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 5: The Catcher in the Rye -->
+    <div class="tracker-item" data-book-id="5">
+      <img class="book-cover" src="catcher.jpg" alt="The Catcher in the Rye Cover">
+      <div class="book-info">
+         <h3 class="book-title">The Catcher in the Rye</h3>
+         <p class="book-author">by J.D. Salinger</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">234</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">234</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 6: Moby Dick -->
+    <div class="tracker-item" data-book-id="6">
+      <img class="book-cover" src="moby.jpg" alt="Moby Dick Cover">
+      <div class="book-info">
+         <h3 class="book-title">Moby Dick</h3>
+         <p class="book-author">by Herman Melville</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">635</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">635</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 7: The Let Them Theory -->
+    <div class="tracker-item" data-book-id="7">
+      <img class="book-cover" src="LetThem.jpg" alt="The Let Them Theory">
+      <div class="book-info">
+         <h3 class="book-title">The Let Them Theory</h3>
+         <p class="book-author">by John U. Bacon</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">150</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">150</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 8: Metamorphosis -->
+    <div class="tracker-item" data-book-id="8">
+      <img class="book-cover" src="metamorphosis.jpg" alt="Metamorphosis">
+      <div class="book-info">
+         <h3 class="book-title">Metamorphosis</h3>
+         <p class="book-author">by Franz Kafka</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">100</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">100</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 9: Jane Eyre -->
+    <div class="tracker-item" data-book-id="9">
+      <img class="book-cover" src="Jane.jpg" alt="Jane Eyre Cover">
+      <div class="book-info">
+         <h3 class="book-title">Jane Eyre</h3>
+         <p class="book-author">by Charlotte Brontë</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">500</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">500</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 10: Crime and Punishment -->
+    <div class="tracker-item" data-book-id="10">
+      <img class="book-cover" src="crime.webp" alt="Crime and Punishment Cover">
+      <div class="book-info">
+         <h3 class="book-title">Crime and Punishment</h3>
+         <p class="book-author">by Fyodor Dostoevsky</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">430</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">430</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 11: War and Peace -->
+    <div class="tracker-item" data-book-id="11">
+      <img class="book-cover" src="war.jpg" alt="War and Peace Cover">
+      <div class="book-info">
+         <h3 class="book-title">War and Peace</h3>
+         <p class="book-author">by Leo Tolstoy</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">1225</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">1225</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+    <!-- Tracker Item 12: The Odyssey -->
+    <div class="tracker-item" data-book-id="12">
+      <img class="book-cover" src="odyssey.jpg" alt="The Odyssey Cover">
+      <div class="book-info">
+         <h3 class="book-title">The Odyssey</h3>
+         <p class="book-author">by Homer</p>
+         <p class="total-pages">Total Pages: <span class="pages-total">500</span></p>
+      </div>
+      <div class="progress-controls">
+         <button class="minus-btn">-</button>
+         <span class="pages-read">0</span> / <span class="pages-total">500</span>
+         <button class="plus-btn">+</button>
+      </div>
+    </div>
+  
+</div>
+  </section>
+  <script src="tracker.js"></script>
+</body>
+</html>
+<style>
+    .progress-bar-container {
+        width: 100%;
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: #007BFF;
+        border-radius: 3px;
+        transition: width 0.3s ease;
+    }
+
+    .tracker-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tracker-item-header {
+        display: flex;
+        align-items: center;
+    }
+</style>

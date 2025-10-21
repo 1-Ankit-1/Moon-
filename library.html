@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Library</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+      // Check login status before loading the page
+      if (!sessionStorage.getItem('isLoggedIn')) {
+          window.location.href = 'index.html';
+      }
+  </script>
+</head>
+<body>
+  <div id="search-container">
+    <!-- Reading Progress Button on the left -->
+    <button id="progress-btn">Reading Progress</button>
+    
+    <!-- Search Box in the center -->
+    <input type="text" id="book-search" placeholder="Search for books...">
+    
+    <!-- Custom Dropdown (Category Filter) on the right -->
+    <div id="filter-container">
+      <div class="dropdown" id="category-select">
+        <span class="selected-option">All Categories</span>
+        <div class="dropdown-icon">&#9660;</div>
+        <div class="dropdown-options">
+          <div class="dropdown-option" data-value="all">All Categories</div>
+          <div class="dropdown-option" data-value="classic">Classic</div>
+          <div class="dropdown-option" data-value="modern">Modern</div>
+          <div class="dropdown-option" data-value="sci-fi">Sci-Fi</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Add Logout Button -->
+    <button id="logout-btn" class="nav-btn">Logout</button>
+</div>
+  
+
+  <!-- Featured Books Section -->
+  <section id="featured-books">
+    <h1>Featured E‑Books</h1>
+    
+    <!-- Slot 1 -->
+    <div class="book-card" data-title="1984" data-author="George Orwell" data-category="classic">
+      <img src="ninteen_eighty_four.webp" alt="1984 Cover">
+      <h3>1984</h3>
+      <p>by George Orwell</p>
+      <a href="https://books.google.co.in/books?id=kotPYEqx7kMC&lpg=PP1&pg=PP1#v=onepage&q&f=false" class="download-link">Read Here</a>
+    </div>
+    
+    <!-- Slot 2 -->
+    <div class="book-card" data-title="To Kill a Mockingbird" data-author="Harper Lee" data-category="classic">
+      <img src="mockingbird.jpg" alt="To Kill a Mockingbird Cover">
+      <h3>To Kill a Mockingbird</h3>
+      <p>by Harper Lee</p>
+      <a href="https://books.google.co.in/books?id=PGR2AwAAQBAJ&lpg=PP1&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 3 -->
+    <div class="book-card" data-title="The Great Gatsby" data-author="F. Scott Fitzgerald" data-category="classic">
+      <img src="gatsby.jpg" alt="The Great Gatsby Cover">
+      <h3>The Great Gatsby</h3>
+      <p>by F. Scott Fitzgerald</p>
+      <a href="https://books.google.co.in/books?id=iXn5U2IzVH0C&lpg=PP1&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 4 -->
+    <div class="book-card" data-title="Brave New World" data-author="Aldous Huxley" data-category="sci-fi">
+      <img src="brave.jpg" alt="Brave New World Cover">
+      <h3>Brave New World</h3>
+      <p>by Aldous Huxley</p>
+      <a href="https://www.google.co.in/books/edition/Brave_New_World/TIJ5EAAAQBAJ?hl=en&gbpv=1&dq=Brave%20New%20World&pg=PA1&printsec=frontcover" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 5 -->
+    <div class="book-card" data-title="The Catcher in the Rye" data-author="J.D. Salinger" data-category="classic">
+      <img src="catcher.jpg" alt="The Catcher in the Rye Cover">
+      <h3>The Catcher in the Rye</h3>
+      <p>by J.D. Salinger</p>
+      <a href="https://www.google.co.in/books/edition/The_Catcher_in_the_Rye/ScdAEQAAQBAJ?hl=en&gbpv=1&dq=The%20Catcher%20in%20the%20Rye&pg=PA1&printsec=frontcover" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 6 -->
+    <div class="book-card" data-title="Moby Dick" data-author="Herman Melville" data-category="classic">
+      <img src="moby.jpg" alt="Moby Dick Cover">
+      <h3>Moby Dick</h3>
+      <p>by Herman Melville</p>
+      <a href="https://books.google.co.in/books?id=XV8XAAAAYAAJ&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 7 -->
+    <div class="book-card" data-title="The Let Them Theory" data-author="John U. Bacon" data-category="modern">
+      <img src="LetThem.jpg" alt="The Let Them Theory">
+      <h3>The Let Them Theory</h3>
+      <p>by John U. Bacon</p>
+      <a href="https://www.google.co.in/books/edition/Let_Them_Lead/J-YZEAAAQBAJ?hl=en&gbpv=1&dq=Let%20Them&pg=PP1&printsec=frontcover" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 8 -->
+    <div class="book-card" data-title="Metamorphosis" data-author="Franz Kafka" data-category="classic">
+      <img src="metamorphosis.jpg" alt="Metamorphosis">
+      <h3>Metamorphosis</h3>
+      <p>by Franz Kafka</p>
+      <a href="https://www.google.co.in/books/edition/Metamorphosis/3Ny3EAAAQBAJ?hl=en&gbpv=1&dq=metamorphosis&pg=PA1&printsec=frontcover" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 9 -->
+    <div class="book-card" data-title="Jane Eyre" data-author="Charlotte Brontë" data-category="classic">
+      <img src="Jane.jpg" alt="Jane Eyre Cover">
+      <h3>Jane Eyre</h3>
+      <p>by Charlotte Brontë</p>
+      <a href="https://books.google.co.in/books?id=lSMGAAAAQAAJ&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 10 -->
+    <div class="book-card" data-title="Crime and Punishment" data-author="Fyodor Dostoevsky" data-category="classic">
+      <img src="crime.webp" alt="Crime and Punishment Cover">
+      <h3>Crime and Punishment</h3>
+      <p>by Fyodor Dostoevsky</p>
+      <a href="https://www.google.co.in/books/edition/The_Originals_Crime_and_Punishment/M1FnDwAAQBAJ?hl=en&gbpv=1&dq=crime%20and%20punishment&pg=PA1&printsec=frontcover" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 11 -->
+    <div class="book-card" data-title="War and Peace" data-author="Leo Tolstoy" data-category="classic">
+      <img src="war.jpg" alt="War and Peace Cover">
+      <h3>War and Peace</h3>
+      <p>by Leo Tolstoy</p>
+      <a href="https://books.google.co.in/books?id=s-OQ2yHDIMQC&lpg=PP1&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+    
+    <!-- Slot 12 -->
+    <div class="book-card" data-title="The Odyssey" data-author="Homer" data-category="classic">
+      <img src="odyssey.jpg" alt="The Odyssey Cover">
+      <h3>The Odyssey</h3>
+      <p>by Homer</p>
+      <a href="https://books.google.co.in/books?id=qhQAywOYz10C&lpg=PP1&pg=PP1#v=onepage&q&f=false" class="download-link" download>Read Here</a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('logout-btn').addEventListener('click', function() {
+        sessionStorage.clear();
+        window.location.href = 'index.html?logout=true';
+    });
+  </script>
+</body>
+</html>
